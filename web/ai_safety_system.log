@@ -1,0 +1,6 @@
+2025-09-08 20:10:44,457 - ai_safety_integration - INFO - AI Safety System initialized successfully
+2025-09-08 20:10:50,352 - ai_safety_integration - ERROR - Abuse detection error: Model not loaded. Call load_model() first.
+2025-09-08 20:10:50,390 - ai_safety_integration - ERROR - Escalation detection error: 'recommendation'
+2025-09-08 20:11:00,627 - ai_safety_integration - ERROR - Abuse detection error: Model not loaded. Call load_model() first.
+2025-09-08 20:11:09,840 - ai_safety_integration - ERROR - Abuse detection error: Model not loaded. Call load_model() first.
+2025-09-08 20:11:23,900 - ai_safety_integration - ERROR - Abuse detection error: Model not loaded. Call load_model() first.

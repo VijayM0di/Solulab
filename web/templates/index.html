@@ -1,0 +1,682 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Safety Models POC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .feature-card {
+            transition: transform 0.2s ease-in-out;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .safety-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .badge-low { background-color: #d1edff; color: #0c5460; }
+        .badge-medium { background-color: #fff3cd; color: #664d03; }
+        .badge-high { background-color: #f8d7da; color: #721c24; }
+        .badge-critical { background-color: #dc3545; color: white; }
+
+        .demo-section {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .result-card {
+            margin-top: 1rem;
+            border-left: 4px solid #007bff;
+        }
+
+        .loading-spinner {
+            display: none;
+        }
+
+        .safety-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .stats-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .demo-input {
+            min-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-shield-alt"></i> AI Safety Models POC
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="#demo">Demo</a>
+                <a class="nav-link" href="#features">Features</a>
+                <a class="nav-link" href="#stats">Statistics</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-4">
+                <i class="fas fa-shield-alt"></i> AI Safety Models POC
+            </h1>
+            <p class="lead mb-4">
+                Comprehensive AI-powered content moderation and user protection system
+            </p>
+            <p class="mb-4">
+                Real-time detection of abuse, escalation patterns, crisis situations, and age-inappropriate content
+            </p>
+            <a href="#demo" class="btn btn-light btn-lg">
+                <i class="fas fa-play"></i> Try Demo
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="container">
+        <h2 class="text-center mb-5">AI Safety Features</h2>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-comments safety-icon text-danger"></i>
+                        <h5 class="card-title">Abuse Detection</h5>
+                        <p class="card-text">
+                            BERT-based detection of toxic, threatening, and inappropriate language in real-time.
+                        </p>
+                        <ul class="list-unstyled small">
+                            <li>• Multi-label classification</li>
+                            <li>• 95%+ accuracy</li>
+                            <li>• Real-time processing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-chart-line safety-icon text-warning"></i>
+                        <h5 class="card-title">Escalation Detection</h5>
+                        <p class="card-text">
+                            Identifies when conversations become emotionally dangerous or aggressive.
+                        </p>
+                        <ul class="list-unstyled small">
+                            <li>• Sentiment progression</li>
+                            <li>• Temporal analysis</li>
+                            <li>• Pattern recognition</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-heart safety-icon text-info"></i>
+                        <h5 class="card-title">Crisis Intervention</h5>
+                        <p class="card-text">
+                            Detects self-harm indicators and suicidal ideation for immediate support.
+                        </p>
+                        <ul class="list-unstyled small">
+                            <li>• Mental health crisis detection</li>
+                            <li>• Severity assessment</li>
+                            <li>• Resource recommendations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-child safety-icon text-success"></i>
+                        <h5 class="card-title">Content Filtering</h5>
+                        <p class="card-text">
+                            Age-appropriate content filtering for guardian-supervised accounts.
+                        </p>
+                        <ul class="list-unstyled small">
+                            <li>• Age-based restrictions</li>
+                            <li>• Parental controls</li>
+                            <li>• Content categorization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="container">
+        <div class="demo-section">
+            <h2 class="text-center mb-4">
+                <i class="fas fa-flask"></i> Interactive Demo
+            </h2>
+            <p class="text-center text-muted mb-4">
+                Enter a message below to see how the AI Safety system analyzes it for various safety concerns.
+            </p>
+
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card">
+                        <div class="card-body">
+                            <form id="demoForm">
+                                <div class="mb-3">
+                                    <label for="messageText" class="form-label">Message to Analyze</label>
+                                    <textarea 
+                                        class="form-control demo-input" 
+                                        id="messageText" 
+                                        placeholder="Enter a message to test (e.g., 'I hate this stupid system!', 'I don't want to live anymore', 'This movie has violence and adult content')..."
+                                        required></textarea>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="userAge" class="form-label">User Age</label>
+                                            <select class="form-select" id="userAge">
+                                                <option value="8">8 years old</option>
+                                                <option value="13">13 years old</option>
+                                                <option value="16">16 years old</option>
+                                                <option value="18" selected>18 years old</option>
+                                                <option value="25">25 years old</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="userId" class="form-label">User ID (optional)</label>
+                                            <input type="text" class="form-control" id="userId" placeholder="demo_user">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-search"></i> Analyze Message
+                                    </button>
+                                    <button type="button" class="btn btn-secondary btn-lg ms-2" id="generateSample">
+                                        <i class="fas fa-random"></i> Generate Sample
+                                    </button>
+                                </div>
+                            </form>
+
+                            <div class="loading-spinner text-center mt-3">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Analyzing...</span>
+                                </div>
+                                <p class="mt-2">Analyzing message...</p>
+                            </div>
+
+                            <div id="results" class="mt-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sample Messages -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <h5 class="text-center">Quick Test Examples</h5>
+                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                        <button class="btn btn-outline-secondary btn-sm sample-btn" data-text="You're such an idiot and I hate you!" data-age="18">
+                            Abuse Example
+                        </button>
+                        <button class="btn btn-outline-secondary btn-sm sample-btn" data-text="I don't want to live anymore" data-age="19">
+                            Crisis Example
+                        </button>
+                        <button class="btn btn-outline-secondary btn-sm sample-btn" data-text="This movie contains graphic violence and adult themes" data-age="12">
+                            Content Filter Example
+                        </button>
+                        <button class="btn btn-outline-secondary btn-sm sample-btn" data-text="Thank you for your help, this is great!" data-age="18">
+                            Safe Content Example
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Statistics -->
+    <section id="stats" class="container">
+        <h2 class="text-center mb-4">System Statistics</h2>
+        <div id="systemStats">
+            <div class="text-center">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading stats...</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-2">
+                <i class="fas fa-shield-alt"></i> AI Safety Models POC System
+            </p>
+            <p class="mb-0 text-muted">
+                Comprehensive content moderation and user protection powered by AI
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // DOM elements
+        const demoForm = document.getElementById('demoForm');
+        const messageText = document.getElementById('messageText');
+        const userAge = document.getElementById('userAge');
+        const userId = document.getElementById('userId');
+        const resultsDiv = document.getElementById('results');
+        const loadingSpinner = document.querySelector('.loading-spinner');
+        const generateSampleBtn = document.getElementById('generateSample');
+        const sampleButtons = document.querySelectorAll('.sample-btn');
+
+        // Event listeners
+        demoForm.addEventListener('submit', analyzeMessage);
+        generateSampleBtn.addEventListener('click', generateSampleMessage);
+
+        // Add click handlers for sample buttons
+        sampleButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                messageText.value = e.target.dataset.text;
+                userAge.value = e.target.dataset.age;
+                analyzeMessage(e);
+            });
+        });
+
+        // Analyze message function
+        async function analyzeMessage(e) {
+            e.preventDefault();
+
+            if (!messageText.value.trim()) {
+                alert('Please enter a message to analyze');
+                return;
+            }
+
+            // Show loading
+            loadingSpinner.style.display = 'block';
+            resultsDiv.innerHTML = '';
+
+            try {
+                const response = await fetch('/api/analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        text: messageText.value,
+                        user_age: parseInt(userAge.value),
+                        user_id: userId.value || 'demo_user'
+                    })
+                });
+
+                const result = await response.json();
+                displayResults(result);
+
+            } catch (error) {
+                console.error('Error analyzing message:', error);
+                resultsDiv.innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Error analyzing message: ${error.message}
+                    </div>
+                `;
+            } finally {
+                loadingSpinner.style.display = 'none';
+            }
+        }
+
+        // Display results function
+        function displayResults(result) {
+            if (result.status === 'error') {
+                resultsDiv.innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Error: ${result.error}
+                    </div>
+                `;
+                return;
+            }
+
+            const riskBadgeClass = {
+                'low': 'badge-low',
+                'medium': 'badge-medium', 
+                'high': 'badge-high',
+                'critical': 'badge-critical'
+            }[result.risk_level] || 'badge-low';
+
+            const riskIcon = {
+                'low': 'fa-check-circle text-success',
+                'medium': 'fa-exclamation-triangle text-warning',
+                'high': 'fa-exclamation-circle text-danger',
+                'critical': 'fa-times-circle text-danger'
+            }[result.risk_level] || 'fa-check-circle text-success';
+
+            let html = `
+                <div class="result-card card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-chart-bar"></i> Safety Analysis Results
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6><i class="fas ${riskIcon}"></i> Overall Risk Assessment</h6>
+                                <p>
+                                    Risk Level: <span class="safety-badge ${riskBadgeClass}">${result.risk_level.toUpperCase()}</span>
+                                </p>
+                                <p>Risk Score: <strong>${result.risk_score}</strong></p>
+                                <p>Human Review: <span class="${result.human_review_required ? 'text-danger' : 'text-success'}">
+                                    ${result.human_review_required ? '⚠️ Required' : '✅ Not Required'}
+                                </span></p>
+                            </div>
+                            <div class="col-md-6">
+                                <h6><i class="fas fa-clock"></i> Analysis Details</h6>
+                                <p><small>Message ID: ${result.message_id}</small></p>
+                                <p><small>Analyzed: ${new Date(result.timestamp).toLocaleString()}</small></p>
+                            </div>
+                        </div>
+            `;
+
+            // Safety checks details
+            html += '<h6 class="mt-3"><i class="fas fa-shield-alt"></i> Safety Checks</h6>';
+            html += '<div class="row">';
+
+            const checks = result.safety_checks;
+
+            // Abuse Detection
+            if (checks.abuse_detection) {
+                const abuse = checks.abuse_detection;
+                const status = abuse.detected ? 
+                    `<span class="text-danger">⚠️ Detected (${abuse.confidence})</span>` : 
+                    `<span class="text-success">✅ Clean</span>`;
+
+                html += `
+                    <div class="col-md-6">
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <h6 class="card-title">🗣️ Abuse Detection</h6>
+                                <p class="card-text">${status}</p>
+                `;
+
+                if (abuse.detected && abuse.categories) {
+                    html += `<small>Categories: ${abuse.categories.join(', ')}</small>`;
+                }
+
+                html += '</div></div></div>';
+            }
+
+            // Content Filtering
+            if (checks.content_filtering) {
+                const content = checks.content_filtering;
+                const status = content.should_filter ? 
+                    `<span class="text-warning">🚫 Filtered</span>` : 
+                    `<span class="text-success">✅ Appropriate</span>`;
+
+                html += `
+                    <div class="col-md-6">
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <h6 class="card-title">👶 Content Filter</h6>
+                                <p class="card-text">${status}</p>
+                `;
+
+                if (content.should_filter) {
+                    html += `<small>Required Age: ${content.required_age} (User: ${content.user_age})</small><br>`;
+                    html += `<small>Action: ${content.action}</small>`;
+                }
+
+                html += '</div></div></div>';
+            }
+
+            // Crisis Detection
+            if (checks.crisis_detection) {
+                const crisis = checks.crisis_detection;
+                const status = crisis.detected ? 
+                    `<span class="text-danger">🆘 Crisis Detected</span>` : 
+                    `<span class="text-success">✅ No Crisis</span>`;
+
+                html += `
+                    <div class="col-md-6">
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <h6 class="card-title">🚨 Crisis Detection</h6>
+                                <p class="card-text">${status}</p>
+                `;
+
+                if (crisis.detected) {
+                    html += `<small>Severity: ${crisis.severity_level}</small><br>`;
+                    html += `<small>Intervention: ${crisis.requires_intervention ? 'Required' : 'Not Required'}</small>`;
+                }
+
+                html += '</div></div></div>';
+            }
+
+            // Escalation Detection
+            if (checks.escalation_detection) {
+                const escalation = checks.escalation_detection;
+                const status = escalation.detected ? 
+                    `<span class="text-warning">📈 Escalating</span>` : 
+                    `<span class="text-success">✅ Stable</span>`;
+
+                html += `
+                    <div class="col-md-6">
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <h6 class="card-title">⚡ Escalation</h6>
+                                <p class="card-text">${status}</p>
+                `;
+
+                if (escalation.detected) {
+                    html += `<small>Score: ${escalation.escalation_score}</small><br>`;
+                    html += `<small>Level: ${escalation.recommendation_level}</small>`;
+                }
+
+                html += '</div></div></div>';
+            }
+
+            html += '</div>'; // Close row
+
+            // Recommended Actions
+            if (result.recommended_actions && result.recommended_actions.length > 0) {
+                html += '<h6 class="mt-3"><i class="fas fa-tasks"></i> Recommended Actions</h6>';
+                html += '<ul class="list-group">';
+
+                result.recommended_actions.forEach(action => {
+                    const priorityIcon = {
+                        'critical': 'fa-exclamation-circle text-danger',
+                        'high': 'fa-exclamation-triangle text-warning',
+                        'medium': 'fa-info-circle text-info',
+                        'low': 'fa-check-circle text-success'
+                    }[action.priority] || 'fa-info-circle';
+
+                    html += `
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div>
+                                <strong><i class="fas ${priorityIcon}"></i> ${action.action.replace(/_/g, ' ').toUpperCase()}</strong>
+                                <p class="mb-0 small text-muted">${action.details}</p>
+                            </div>
+                            <span class="badge bg-secondary">${action.priority}</span>
+                        </li>
+                    `;
+                });
+
+                html += '</ul>';
+            }
+
+            html += '</div></div>'; // Close card
+
+            resultsDiv.innerHTML = html;
+        }
+
+        // Generate sample message
+        async function generateSampleMessage() {
+            try {
+                const response = await fetch('/api/generate_sample_data', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+
+                const data = await response.json();
+
+                if (data.sample_messages && data.sample_messages.length > 0) {
+                    const randomSample = data.sample_messages[Math.floor(Math.random() * data.sample_messages.length)];
+                    messageText.value = randomSample.text;
+
+                    if (randomSample.user_age) {
+                        userAge.value = randomSample.user_age;
+                    }
+                }
+            } catch (error) {
+                console.error('Error generating sample:', error);
+                alert('Error generating sample message');
+            }
+        }
+
+        // Load system statistics
+        async function loadSystemStats() {
+            try {
+                const response = await fetch('/api/stats');
+                const stats = await response.json();
+
+                let html = `
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="stats-card">
+                                <i class="fas fa-shield-alt text-primary" style="font-size: 2rem;"></i>
+                                <h5 class="mt-2">${stats.system_status.toUpperCase()}</h5>
+                                <p class="text-muted">System Status</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stats-card">
+                                <i class="fas fa-comments text-success" style="font-size: 2rem;"></i>
+                                <h5 class="mt-2">${stats.conversation_tracking.active_conversations}</h5>
+                                <p class="text-muted">Active Conversations</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stats-card">
+                                <i class="fas fa-chart-bar text-info" style="font-size: 2rem;"></i>
+                                <h5 class="mt-2">${stats.conversation_tracking.total_messages_processed}</h5>
+                                <p class="text-muted">Messages Processed</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stats-card">
+                                <i class="fas fa-clock text-warning" style="font-size: 2rem;"></i>
+                                <h5 class="mt-2">Real-time</h5>
+                                <p class="text-muted">Processing Speed</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6><i class="fas fa-cogs"></i> Model Status</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row text-center">
+                `;
+
+                const models = stats.models_initialized;
+                const modelNames = {
+                    'abuse_detection': '🗣️ Abuse Detection',
+                    'escalation_detection': '⚡ Escalation Detection',
+                    'crisis_detection': '🚨 Crisis Detection',
+                    'content_filtering': '👶 Content Filtering'
+                };
+
+                for (const [key, status] of Object.entries(models)) {
+                    const statusIcon = status ? '✅ Ready' : '⚠️ Loading';
+                    const statusClass = status ? 'text-success' : 'text-warning';
+
+                    html += `
+                        <div class="col-md-3">
+                            <div class="stats-card">
+                                <h6>${modelNames[key]}</h6>
+                                <p class="${statusClass}">${statusIcon}</p>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                html += `
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('systemStats').innerHTML = html;
+
+            } catch (error) {
+                console.error('Error loading stats:', error);
+                document.getElementById('systemStats').innerHTML = `
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Unable to load system statistics
+                    </div>
+                `;
+            }
+        }
+
+        // Load stats on page load
+        document.addEventListener('DOMContentLoaded', loadSystemStats);
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

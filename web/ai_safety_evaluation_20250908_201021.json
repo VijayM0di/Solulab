@@ -1,0 +1,84 @@
+{
+  "evaluation_metadata": {
+    "timestamp": "2025-09-08T20:10:21.222517",
+    "total_evaluation_time": 2.2674264907836914,
+    "evaluator_version": "1.0.0"
+  },
+  "performance_metrics": {
+    "total_messages_processed": 100,
+    "success_rate": 1.0,
+    "average_processing_time": 0.003352501392364502,
+    "median_processing_time": 0.0030002593994140625,
+    "p95_processing_time": 0.004001796245574951,
+    "p99_processing_time": 0.005090763568878359,
+    "throughput_messages_per_second": 298.28473815926,
+    "min_processing_time": 0.0010004043579101562,
+    "max_processing_time": 0.040996551513671875
+  },
+  "accuracy_metrics": {
+    "abuse_detection": {
+      "accuracy": 0.74,
+      "precision": 0,
+      "recall": 0.0,
+      "f1_score": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "true_negatives": 148,
+      "false_negatives": 52,
+      "total_samples": 200
+    },
+    "crisis_detection": {
+      "accuracy": 0.5,
+      "crisis_detected_correctly": 0,
+      "crisis_missed": 75,
+      "false_crisis_alerts": 0,
+      "total_samples": 150
+    },
+    "content_filtering": {
+      "accuracy": 0.62,
+      "inappropriate_content_caught": 11,
+      "inappropriate_content_missed": 38,
+      "appropriate_content_blocked": 0,
+      "total_samples": 100
+    },
+    "escalation_detection": {
+      "accuracy": 0.0,
+      "escalations_detected": 0,
+      "escalations_missed": 50,
+      "total_conversations": 50
+    }
+  },
+  "safety_effectiveness": {
+    "critical_scenarios_handled": 1,
+    "appropriate_interventions": 1,
+    "human_review_accuracy": 2,
+    "total_scenarios": 3,
+    "critical_scenarios_handled_percentage": 33.33333333333333,
+    "appropriate_interventions_percentage": 33.33333333333333,
+    "human_review_accuracy_percentage": 66.66666666666666
+  },
+  "integration_testing": {
+    "tests_passed": 0,
+    "total_tests": 3,
+    "component_integration_success": 1,
+    "risk_level_accuracy": 1,
+    "integration_success_rate": 0.0
+  },
+  "edge_case_handling": {
+    "handled_successfully": 7,
+    "processing_errors": 0,
+    "total_edge_cases": 7,
+    "average_processing_time": 0.005670445305960519,
+    "error_details": [],
+    "success_rate": 1.0
+  },
+  "overall_score": {
+    "performance_score": 99.83237493038177,
+    "accuracy_score": 46.5,
+    "safety_score": 40.0,
+    "integration_score": 0.0,
+    "edge_case_score": 100.0,
+    "overall_score": 55.91647498607635,
+    "grade": "F"
+  }
+}
