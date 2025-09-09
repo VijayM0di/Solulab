@@ -24,10 +24,12 @@ class AISafetySystem:
 
         # Initialize all safety models
         self.abuse_detector = AbuseDetectionModel()
-        self.escalation_detector = EscalationPatternDetector()
-        self.crisis_detector = CrisisInterventionModel()
-        self.content_filter = ContentFilteringModel()
-
+        self.abuse_detector.load_model()
+        # self.escalation_detector = EscalationPatternDetector()
+        # #self.escalation_detector.load_model()   
+        # self.crisis_detector = CrisisInterventionModel()
+        # #self.crisis_detector.load_model()   
+        # self.content_filter = ContentFilteringModel()
         # System configuration
         self.safety_thresholds = self.config.get('safety_thresholds', {
             'abuse_threshold': 0.7,

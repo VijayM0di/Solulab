@@ -159,11 +159,11 @@ class ContentFilteringModel:
 
         features = self.extract_content_features(text)
         age_category = self.determine_age_category(user_age)
-
+        max_required_age = 0
         # Rule-based assessment
         content_issues = []
         should_filter = False
-        max_required_age = 0
+        
 
         for category, intensities in self.content_restrictions.items():
             category_score = features.get(f'{category}_score', 0)
@@ -195,12 +195,13 @@ class ContentFilteringModel:
         guidance_level = self.determine_guidance_level(max_required_age, user_age)
 
         return {
-            'should_filter': should_filter,
-            'user_age': user_age,
+            'should_filter': bool(should_filter),
+            'user_age': int(user_age),
             'user_age_category': age_category,
             'content_issues': content_issues,
-            'max_required_age': max_required_age,
+            'max_required_age': int(max_required_age),
             'guidance_level': guidance_level,
+            'status': 'completed',
             'content_features': features,
             'analysis_timestamp': datetime.now().isoformat()
         }

@@ -4,3 +4,16 @@
 2025-09-08 20:11:00,627 - ai_safety_integration - ERROR - Abuse detection error: Model not loaded. Call load_model() first.
 2025-09-08 20:11:09,840 - ai_safety_integration - ERROR - Abuse detection error: Model not loaded. Call load_model() first.
 2025-09-08 20:11:23,900 - ai_safety_integration - ERROR - Abuse detection error: Model not loaded. Call load_model() first.
+2025-09-09 14:13:31,816 - ai_safety_integration - INFO - AI Safety System initialized successfully
+2025-09-09 14:13:37,655 - ai_safety_integration - ERROR - Abuse detection error: Model not loaded. Call load_model() first.
+2025-09-09 14:13:37,693 - ai_safety_integration - ERROR - Escalation detection error: 'recommendation'
+2025-09-09 16:48:43,651 - abuse_detection_model - INFO - Model bert-base-uncased loaded successfully on cpu
+2025-09-09 16:48:43,668 - ai_safety_integration - INFO - AI Safety System initialized successfully
+2025-09-09 16:50:22,072 - abuse_detection_model - INFO - Model bert-base-uncased loaded successfully on cpu
+2025-09-09 16:50:22,072 - ai_safety_integration - INFO - AI Safety System initialized successfully
+2025-09-09 16:50:41,551 - ai_safety_integration - ERROR - Content filtering error: 'AISafetySystem' object has no attribute 'content_filter'
+2025-09-09 16:50:41,551 - ai_safety_integration - ERROR - Crisis detection error: 'AISafetySystem' object has no attribute 'crisis_detector'
+2025-09-09 16:50:41,551 - ai_safety_integration - ERROR - Escalation detection error: 'AISafetySystem' object has no attribute 'escalation_detector'
+2025-09-09 16:50:49,555 - ai_safety_integration - ERROR - Content filtering error: 'AISafetySystem' object has no attribute 'content_filter'
+2025-09-09 16:50:49,556 - ai_safety_integration - ERROR - Crisis detection error: 'AISafetySystem' object has no attribute 'crisis_detector'
+2025-09-09 16:50:49,556 - ai_safety_integration - ERROR - Escalation detection error: 'AISafetySystem' object has no attribute 'escalation_detector'
